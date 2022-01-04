@@ -2,7 +2,7 @@ pipeline {
     agent { 
     docker { 
     image 'python:3.7'
-    args '-v $HOME/.m2:/root/.m2'} }
+    args ''} }
 
     stages {
         stage('1-Build') {
