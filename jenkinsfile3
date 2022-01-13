@@ -1,17 +1,43 @@
 pipeline {
+
     agent any
+    environment {
+        
+    }
     stages {
+    
         stage('Build') {
-            agent {
-                docker {
-                    image 'gradle:6.7-jdk11'
-                    // Run the container on the node specified at the top-level of the Pipeline, in the same workspace, rather than on a new node entirely:
-                    reuseNode true
+            when {
+                expression {
+                BRANCH_NAME == 'master' 
                 }
             }
             steps {
-                sh 'gradle --version'
+                echo 'building the application...'
+            }
+        }
+        stage('Test') {
+        
+            steps {
+                echo 'testing the application...'
+            }
+        }
+        stage('Deploy') {
+        
+            steps {
+                echo 'deploy...'
             }
         }
     }
 }
+    post {
+        always {
+        //
+        }
+        success {
+        //
+        }
+        failure {
+        //
+        }
+    }
