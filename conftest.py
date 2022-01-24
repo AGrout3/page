@@ -2,7 +2,6 @@ import pytest
 from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
 
-# для корректного отображения кириллицы в параметризаторах
 def pytest_make_parametrize_id(config, val): return repr(val)
 
 def pytest_addoption(parser):
